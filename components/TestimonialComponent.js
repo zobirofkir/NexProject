@@ -12,9 +12,9 @@ export default function TestimonialComponent() {
       className="relative py-16 bg-white dark:bg-black text-white h-screen overflow-hidden"
     >
       {/* Lottie Background */}
-      <div className="absolute inset-0 -z-10 pointer-events-none opacity-60">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
         <DotLottieReact
-          src="https://lottie.host/3969eb6c-ce9c-407e-baf0-e2445526d695/8ReoPrVYsO.lottie"
+          src="https://lottie.host/32decf28-65a2-4df3-abf9-cc9be79e6388/9mUY44bPhl.lottie"
           loop
           autoplay
         />
