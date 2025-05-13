@@ -13,7 +13,7 @@ export default function ProductComponent() {
       className="relative py-24 bg-white dark:bg-black min-h-screen overflow-hidden transition-colors duration-300"
     >
       {/* Lottie Background */}
-      <div className="absolute inset-0 -z-10 pointer-events-none opacity-30">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
         <DotLottieReact
           src="https://lottie.host/3969eb6c-ce9c-407e-baf0-e2445526d695/8ReoPrVYsO.lottie"
           loop
