@@ -49,7 +49,9 @@ export default function HeaderComponent() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">MyShop</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">
+            <a href="#">MyShop</a>
+          </h1>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
