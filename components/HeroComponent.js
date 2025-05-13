@@ -2,7 +2,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function HeroComponent() {
   return (
-    <section className="relative h-screen w-full  dark:from-black dark:to-gray-900 flex items-center justify-center px-6 overflow-hidden">
+    <section className="relative h-screen w-full  dark:bg-black bg-white flex items-center justify-center px-6 overflow-hidden">
       
       {/* Lottie Background */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
