@@ -1,10 +1,17 @@
 export default function HeroComponent() {
-    return (
-      <section className="bg-gray-100 text-center py-20">
-        <h2 className="text-4xl font-bold mb-4">Welcome to MyShop</h2>
-        <p className="text-lg mb-6">Discover top-quality products at the best prices</p>
-        <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Shop Now</button>
-      </section>
-    );
-  }
-  
+  return (
+    <section className="h-screen w-full bg-gradient-to-br from-gray-100 to-white dark:from-black dark:to-gray-900 flex items-center justify-center px-6">
+      <div className="text-center max-w-3xl">
+        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">
+          Welcome to <span className="text-purple-600 dark:text-purple-400">MyShop</span>
+        </h1>
+        <p className="text-lg md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
+          Discover top-quality products at unbeatable prices.
+        </p>
+        <button className="bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white font-medium text-lg px-8 py-4 rounded-xl shadow-lg transition-all duration-300">
+          Shop Now
+        </button>
+      </div>
+    </section>
+  );
+}

@@ -40,9 +40,9 @@ export default function HeaderComponent() {
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
             <ul className="flex space-x-6">
-              <li><a href="#features" className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200">Features</a></li>
-              <li><a href="#products" className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200">Products</a></li>
-              <li><a href="#testimonials" className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200">Testimonials</a></li>
+              <li><a href="#features" className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200">Features</a></li>
+              <li><a href="#products" className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200">Products</a></li>
+              <li><a href="#testimonials" className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200">Testimonials</a></li>
             </ul>
           </nav>
           
