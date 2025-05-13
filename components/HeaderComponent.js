@@ -2,41 +2,55 @@ import { useState, useEffect } from 'react';
 
 export default function HeaderComponent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-
   const [theme, setTheme] = useState('light');
-  
-  /**
-   * Toggle theme function
-   */
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Toggle theme function
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.classList.toggle('dark');
   };
-  
-  /**
-   * Initialize theme from localStorage on component mount
-   */
+
+  // Initialize theme on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    
+
     setTheme(savedTheme);
-    
     if (savedTheme === 'dark') {
       document.documentElement.classList.add('dark');
     }
   }, []);
 
+  // Handle scroll to show/hide header
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setShowHeader(false); // scrolling down
+      } else {
+        setShowHeader(true); // scrolling up
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="bg-white dark:bg-black shadow-md transition-colors duration-300">
+    <header className={`bg-white dark:bg-black shadow-md transition-all duration-300 fixed top-0 left-0 w-full z-50 ${showHeader ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">MyShop</h1>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
             <ul className="flex space-x-6">
@@ -45,17 +59,17 @@ export default function HeaderComponent() {
               <li><a href="#testimonials" className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200">Testimonials</a></li>
             </ul>
           </nav>
-          
+
           {/* Theme Toggle and Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            {/* Theme Toggle Button */}
+            {/* Theme Toggle */}
             <button 
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
             </button>
-            
+
             {/* Mobile Menu Button */}
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -74,7 +88,7 @@ export default function HeaderComponent() {
             </button>
           </div>
         </div>
-        
+
         {/* Mobile Navigation */}
         <div 
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
