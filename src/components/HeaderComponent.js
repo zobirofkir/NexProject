@@ -1,20 +1,23 @@
 import { useState, useEffect } from 'react';
+import { useAppState } from '../hooks/useHeaderComponent';
 
 export default function HeaderComponent() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, setTheme] = useState('light');
-  const [showHeader, setShowHeader] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Toggle theme function
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark');
-  };
+  const {
+    isMenuOpen,
+    setIsMenuOpen,
+    theme,
+    setTheme,
+    toggleTheme,
+    showHeader,
+    setShowHeader,
+    lastScrollY,
+    setLastScrollY,
+  } = useAppState();
 
-  // Initialize theme on mount
+  /**
+   * Initialize theme on mount
+   */
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -25,15 +28,17 @@ export default function HeaderComponent() {
     }
   }, []);
 
-  // Handle scroll to show/hide header
+  /**
+   * Handle scroll to show/hide header
+   */
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setShowHeader(false); // scrolling down
+        setShowHeader(false);
       } else {
-        setShowHeader(true); // scrolling up
+        setShowHeader(true);
       }
 
       setLastScrollY(currentScrollY);
